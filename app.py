@@ -48,6 +48,8 @@ def calculate_instagram():
     data = request.json
     user = UserProfile(
         followers=data.get("followers", 0),
+        avg_engagements=data.get("avg_engagements", 0),
+        avg_views=data.get("avg_views", 0),
         engagement_rate=data.get("engagement_rate", 0),
         content_type=data.get("content_type", "non-sector"),
         page_type=data.get("page_type", "personal"),
