@@ -66,8 +66,9 @@ def calculate_tiktok():
     data = request.json
     user = UserProfile(
         followers=data.get("followers", 0),
-        engagement_rate=data.get("engagement_rate", 0),
+        avg_engagements=data.get("avg_engagements", 0),
         avg_views=data.get("avg_views", 0),
+        engagement_rate=data.get("engagement_rate", 0),
         content_type=data.get("content_type", "non-sector"),
         brand_size=data.get("brand_size", "startup")
     )
@@ -79,6 +80,10 @@ def calculate_tiktok():
 def calculate_youtube():
     data = request.json
     user = UserProfile(
+        followers=data.get("followers", 0),
+        avg_engagements=data.get("avg_engagements", 0),
+        avg_views=data.get("avg_views", 0),
+        engagement_rate=data.get("engagement_rate", 0),
         subscribers=data.get("subscribers", 0),
         avg_youtube_views=data.get("avg_youtube_views", 0),
         niche_multiplier=data.get("niche_multiplier", 1.0)
