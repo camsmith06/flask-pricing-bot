@@ -1,5 +1,6 @@
 
 from flask import Flask, request, jsonify
+import json
 from pricing_bot import (
     score_ugc_questionnaire, calculate_ugc_price, estimate_brand_details,
     calculate_instagram_price, calculate_tiktok_price, calculate_youtube_price,
@@ -45,14 +46,9 @@ def estimate_brand():
 
 @app.route("/calculate-instagram-price", methods=["POST"])
 def calculate_instagram():
-    data = request.json
-    user = UserProfile(
-        followers=data.get("followers", 0),
-        engagement_rate=data.get("engagement_rate", 0),
-        content_type=data.get("content_type", "non-sector"),
-        page_type=data.get("page_type", "personal"),
-        brand_size=data.get("brand_size", "startup")
-    )
+    data = json.loads(request.json)
+    json_data = request.json
+    user = UserProfile(**data)
     deliverable = data.get("deliverable", "reel")
     content_format = data.get("content_format", "video")
     integrated = data.get("integrated", False)
