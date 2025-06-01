@@ -46,9 +46,9 @@ def estimate_brand():
 
 @app.route("/calculate-instagram-price", methods=["POST"])
 def calculate_instagram():
-    data = json.loads(request.json)
-    json_data = request.json
-    user = UserProfile(**data)
+    json_data = json.loads(request.json)
+    data = request.json
+    user = UserProfile(**json_data)
     deliverable = data.get("deliverable", "reel")
     content_format = data.get("content_format", "video")
     integrated = data.get("integrated", False)
